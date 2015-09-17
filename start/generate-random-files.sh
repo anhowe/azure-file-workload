@@ -20,8 +20,7 @@ fi
 
 MOUNTSHARE=/mnt/data-a
 
-while :
-do
+for i in {1..10}; do
  PATH1=`cat /dev/urandom| tr -dc 'a-z'|head -c 1`
  PATH2=`cat /dev/urandom| tr -dc 'a-z'|head -c 1`
  FILE=`cat /dev/urandom| tr -dc 'a-z'|head -c 1`
@@ -31,5 +30,4 @@ do
  echo $FULLPATH
  head -c 1M < /dev/urandom >> $FULLPATH
  ls -l $FULLPATH
- sleep 1
 done
