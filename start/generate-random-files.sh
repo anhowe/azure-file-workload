@@ -2,23 +2,24 @@
 
 echo "starting generation"
 
-if [ $# -ne 2 ]
+if [ $# -ne 3 ]
 then
- echo "you must pass storage account name followed by storage account key"
+ echo "you must pass arguments STORAGEACCOUNT STORAGEACCOUNTKEY SHARE"
  exit 1
 fi
 
 ACCOUNT=$1
 ACCOUNTKEY=$2
-mkdir -p /mnt/data-a
-mount -t cifs //${ACCOUNT}.file.core.windows.net/data-a /mnt/data-a -o vers=2.1,username=${ACCOUNT},password=${ACCOUNTKEY}
+SHARE=$3
+MOUNTSHARE=/mnt/${SHARE}
+mkdir -p /mnt/$SHARE
+mount -t cifs //${ACCOUNT}.file.core.windows.net/${SHARE} ${MOUNTSHARE} -o vers=2.1,username=${ACCOUNT},password=${ACCOUNTKEY}
 if [ $? -ne 0 ]
 then
  echo "unable to mount share"
  exit 1
 fi
 
-MOUNTSHARE=/mnt/data-a
 
 for i in {1..10}; do
  PATH1=`cat /dev/urandom| tr -dc 'a-z'|head -c 1`
