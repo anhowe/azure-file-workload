@@ -23,7 +23,7 @@ If you have created a mesos cluster from the [Mesos Azure Quickstart template](h
  $s = New-AzureStorageShare SHARE -Context $ctx
  ```
 
-4. 1.	Go to Marathon, start the App, and run the command docker run --privileged anhowe/azure-file-workload STORAGEACCOUNTNAME STORAGEACCOUNTKEY SHARE (replacing the ALLCAPS names with the correct values)
+4. Go to Marathon, start the App, and run the command docker run --privileged anhowe/azure-file-workload STORAGEACCOUNTNAME STORAGEACCOUNTKEY SHARE (replacing the ALLCAPS names with the correct values)
 
  ![Image of marathon with a single instance](https://raw.githubusercontent.com/anhowe/azure-file-workload/master/images/marathon-app.png)
 
